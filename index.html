@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Notflix</title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+</head>
+
+<body>
+    <div class="notflix-container" id="bind-container">
+        <div class="notflix-container-header">
+            <div class="notflix-container-title">
+                <h1>Notflix</h1>
+            </div>
+        </div>
+        <div class="notflix-container-categories">
+            <h2>Neue Filme</h2>
+            <div class="pictureList" data-bind="foreach: neueFilme">
+                <a class="itemPicture" ><input type="image" data-bind="click: $parent.selectMovie, attr: {src: $data.picture}" ></input></a>
+            </div>
+            <h2>Derzeit beliebt</h2>
+            <div class="pictureList" data-bind="foreach: derzeitBeliebt">
+                <a class="itemPicture"><input type="image" data-bind="click: $parent.selectMovie, attr: {src: $data.picture}" ></input></a>
+            </div>
+            <h2>Nochmal ansehen</h2>
+            <div class = "pictureListlast" data-bind="foreach: nochmalAnsehen">
+                <a class="itemPicture"><input type="image" data-bind="click: $parent.selectMovie, attr: {src: $data.picture}" ></input></a>
+            </div>
+        </div>
+
+        <div id="myModal" class="modal" data-bind="visible: showModal">
+            <div class="modal-content" data-bind="with: selectedMovie">
+                <span class="close" data-bind="click: $root.closeModal">&times;</span>
+                <a data-bind="if: trailerURL === ''">
+                    <img class="movieimage" data-bind="attr: {src: picture}"></img>
+                </a>
+                <a data-bind="if: $root.playTrailer">
+                    <iframe width="560" height="315" data-bind="attr: {src: trailerURL}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </a>
+                <h2 class = "movietitle" data-bind="text: title"></h2>
+                <p class = "movietext">
+                    Director: <span data-bind="text: director"></span>
+                </p>
+                <p class = "movietext">
+                    Year: <span class = "movietext" data-bind="text: year"></span>
+                </p>
+                <p class = "movietext">Description:</p>
+                <p class = "movietext" data-bind="text: description"></p>
+                <p class = "movietext">Besetzung: </p>
+                <ul data-bind="foreach: actors">
+                    <li class = "movietext"><span class = "movietext" data-bind="text: $data"></span></li>
+                </ul>
+                <p class = "movietext">
+                    Genre: <span data-bind="text: genre"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='scripts/knockout-3.5.1.js'></script>
+    <script type='text/javascript' src='scripts/data.js'></script>
+    <script type='text/javascript' src='scripts/listViewModel.js'></script>
+</body>
+
+</html>
