@@ -1,5 +1,5 @@
-Henri Truetsch [206305]
-Ansgar Koopmann [205107]
+Henri Truetsch 
+Ansgar Koopmann 
 
 Hinzufügen eines Films: 
 
